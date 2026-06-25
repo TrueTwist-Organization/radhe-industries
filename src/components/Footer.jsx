@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Linkedin, Youtube } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Linkedin, Youtube, MessageCircle } from 'lucide-react';
 import logo from '../assets/a7a57638-a235-4d2e-bcb4-80cad06d9196.png';
 
 
@@ -56,7 +56,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-white/75">
                 <Phone size={14} className="text-white/40 shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-orange whitespace-nowrap">+91 98765 43210</a>
+                <a href="tel:+919274767732" className="hover:text-orange whitespace-nowrap">Darshan Patel: +91 92747 67732</a>
+              </li>
+              <li className="flex items-center gap-2 text-white/75">
+                <MessageCircle size={14} className="text-white/40 shrink-0" />
+                <a href="https://wa.me/919274767732" target="_blank" rel="noopener noreferrer" className="hover:text-orange whitespace-nowrap">WhatsApp: +91 92747 67732</a>
               </li>
               <li className="flex items-center gap-2 text-white/75">
                 <Mail size={14} className="text-white/40 shrink-0" />

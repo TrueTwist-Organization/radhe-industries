@@ -80,8 +80,8 @@ export default function Contact() {
                 <Phone size={18} className="text-orange" />
               </div>
               <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Call Support</p>
-                <a href="tel:+919876543210" className="text-navy font-bold text-sm hover:text-orange transition-colors">+91 98765 43210</a>
+                <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Call Support (Darshan Patel)</p>
+                <a href="tel:+919274767732" className="text-navy font-bold text-sm hover:text-orange transition-colors">+91 92747 67732</a>
               </div>
             </div>
 
@@ -90,8 +90,8 @@ export default function Contact() {
                 <MessageCircle size={18} className="text-[#25D366]" />
               </div>
               <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">WhatsApp Expert</p>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">+91 98765 43210</a>
+                <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">WhatsApp (Darshan Patel)</p>
+                <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">+91 92747 67732</a>
               </div>
             </div>
 
@@ -154,7 +154,7 @@ export default function Contact() {
                     Our sales engineer has received your details and will contact you with models and pricing within 2 hours.
                   </p>
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/919274767732"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -273,7 +273,7 @@ export default function Contact() {
 
                   <p className="text-center text-[10px] text-steel">
                     Prefer WhatsApp?{' '}
-                    <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
+                    <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
                   </p>
                 </form>
               )}

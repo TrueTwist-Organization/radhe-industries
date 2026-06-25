@@ -562,8 +562,8 @@ export default function Home() {
                       <Phone size={20} className="text-orange" />
                     </div>
                     <div>
-                      <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Phone</p>
-                      <a href="tel:+919876543210" className="text-white font-bold text-base hover:text-orange transition-colors">+91 98765 43210</a>
+                      <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Phone (Darshan Patel)</p>
+                      <a href="tel:+919274767732" className="text-white font-bold text-base hover:text-orange transition-colors">+91 92747 67732</a>
                     </div>
                   </div>
 
@@ -573,7 +573,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">WhatsApp</p>
-                      <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">+91 98765 43210</a>
+                      <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">+91 92747 67732</a>
                     </div>
                   </div>
 
@@ -624,7 +624,7 @@ export default function Home() {
                   <h4 className="text-xl font-extrabold font-heading text-navy mb-2">Inquiry Submitted!</h4>
                   <p className="text-steel text-sm mb-6 max-w-xs">Our sales engineer will contact you with model recommendations and pricing.</p>
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/919274767732"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-3.5 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -704,7 +704,7 @@ export default function Home() {
 
                   <p className="text-center text-[10px] text-steel pt-1">
                     Prefer WhatsApp?{' '}
-                    <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
+                    <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
                   </p>
                 </form>
               )}

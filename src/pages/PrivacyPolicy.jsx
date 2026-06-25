@@ -134,7 +134,7 @@ To exercise any of these rights, please contact us at the details below.`,
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Phone size={14} className="text-orange shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-orange transition-colors">+91 98765 43210</a>
+                 <a href="tel:+919274767732" className="hover:text-orange transition-colors">+91 92747 67732</a>
               </div>
             </div>
           </div>
