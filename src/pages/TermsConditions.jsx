@@ -27,7 +27,7 @@ export default function TermsConditions() {
             Terms &amp; <span className="text-orange">Conditions</span>
           </h1>
           <p className="text-white/70 text-sm max-w-xl mx-auto">
-            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Rajkot, Gujarat
+            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Ahmedabad, Gujarat
           </p>
         </div>
       </section>
@@ -45,9 +45,9 @@ export default function TermsConditions() {
           {[
             {
               title: '1. About Radhe Industries',
-              content: `Radhe Industries is a manufacturer and supplier of submersible pumps and monoset pumps based in Rajkot, Gujarat, India. Our website (radheindustries.com) provides product information, inquiry submission, and dealer contact services.
+              content: `Radhe Industries is a manufacturer and supplier of submersible pumps and monoset pumps based in Ahmedabad, Gujarat, India. Our website (radheindustries.com) provides product information, inquiry submission, and dealer contact services.
 
-Registered Office: 562, G.I.D.C. Metoda, Kishan Gate, Road No.3, Lodhika, Rajkot - 360021, Gujarat, India.`,
+Registered Office: Ahmedabad, Gujarat, India.`,
             },
             {
               title: '2. Use of Website',
@@ -123,7 +123,7 @@ Radhe Industries reserves the right to appoint, modify, or terminate dealership 
             },
             {
               title: '9. Governing Law & Disputes',
-              content: `These Terms & Conditions are governed by the laws of India. Any disputes arising from the use of this website or purchase of our products shall be subject to the exclusive jurisdiction of the courts in Rajkot, Gujarat, India.
+              content: `These Terms & Conditions are governed by the laws of India. Any disputes arising from the use of this website or purchase of our products shall be subject to the exclusive jurisdiction of the courts in Ahmedabad, Gujarat, India.
 
 In the event of a dispute, both parties agree to first attempt resolution through mutual discussion and mediation before pursuing legal proceedings.`,
             },
@@ -153,7 +153,7 @@ We recommend reviewing these terms periodically.`,
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm text-steel">
                 <MapPin size={14} className="text-orange shrink-0" />
-                562, G.I.D.C. Metoda, Kishan Gate, Road No.3, Lodhika, Rajkot - 360021, Gujarat, India
+                Ahmedabad, Gujarat, India
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Mail size={14} className="text-orange shrink-0" />

@@ -593,7 +593,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Factory &amp; Office</p>
-                      <p className="text-white font-semibold text-sm leading-relaxed">562, G.I.D.C. Metoda, Kishan Gate,<br />Road No.3, Lodhika,<br />Rajkot – 360021, Gujarat.</p>
+                      <p className="text-white font-semibold text-sm leading-relaxed">Ahmedabad, Gujarat, India.</p>
                     </div>
                   </div>
                 </div>
@@ -602,7 +602,7 @@ export default function Home() {
               {/* Bottom office hours */}
               <div className="mt-10 pt-8 border-t border-white/10">
                 <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-1">Office Hours</p>
-                <p className="text-white font-bold text-sm">Mon – Sat: 9:00 AM to 6:00 PM</p>
+                <p className="text-white font-bold text-sm">Mon – Sat: 8:00 AM to 8:00 PM</p>
                 <p className="text-white/40 text-xs mt-1">Closed on Sundays &amp; Public Holidays</p>
 
                 {/* Decorative dots */}

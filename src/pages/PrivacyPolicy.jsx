@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
             Privacy <span className="text-orange">Policy</span>
           </h1>
           <p className="text-white/70 text-sm max-w-xl mx-auto">
-            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Rajkot, Gujarat
+            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Ahmedabad, Gujarat
           </p>
         </div>
       </section>
@@ -126,7 +126,7 @@ To exercise any of these rights, please contact us at the details below.`,
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm text-steel">
                 <MapPin size={14} className="text-orange shrink-0" />
-                562, G.I.D.C. Metoda, Kishan Gate, Road No.3, Lodhika, Rajkot - 360021, Gujarat, India
+                Ahmedabad, Gujarat, India
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Mail size={14} className="text-orange shrink-0" />

@@ -52,7 +52,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 leading-relaxed text-white/75">
                 <MapPin size={14} className="text-white/40 mt-0.5 shrink-0" />
-                562, G.I.D.C. Metoda, Kishan Gate, Road No.3, Lodhika, Rajkot - 360021, Gujarat, India.
+                Ahmedabad, Gujarat, India.
               </li>
               <li className="flex items-center gap-2 text-white/75">
                 <Phone size={14} className="text-white/40 shrink-0" />

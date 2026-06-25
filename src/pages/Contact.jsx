@@ -54,7 +54,7 @@ export default function Contact() {
           {[
             { label: 'Response Time', value: '&lt; 2 Hours' },
             { label: 'Support Days', value: 'Mon - Sat' },
-            { label: 'Office Hours', value: '9AM - 6PM' },
+            { label: 'Office Hours', value: '8AM - 8PM' },
             { label: 'WhatsApp', value: 'Available' },
           ].map((s) => (
             <div key={s.label}>
@@ -111,7 +111,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Factory &amp; Office</p>
-                <p className="text-steel text-xs leading-relaxed">562, G.I.D.C. Metoda, Kishan Gate,<br />Road No.3, Lodhika,<br />Rajkot - 360021, Gujarat, India.</p>
+                <p className="text-steel text-xs leading-relaxed">Ahmedabad, Gujarat, India.</p>
               </div>
             </div>
 
@@ -121,7 +121,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Office Hours</p>
-                <p className="text-steel text-xs leading-relaxed">Monday to Saturday<br /><span className="font-bold text-navy">9:00 AM - 6:00 PM</span><br />Closed on Sundays</p>
+                <p className="text-steel text-xs leading-relaxed">Monday to Saturday<br /><span className="font-bold text-navy">8:00 AM - 8:00 PM</span><br />Closed on Sundays</p>
               </div>
             </div>
 
@@ -130,7 +130,7 @@ export default function Contact() {
               <p className="text-white/50 text-[10px] uppercase tracking-widest font-extrabold mb-3">Location Map</p>
               <div className="bg-white/5 rounded-xl h-36 flex items-center justify-center border border-white/10">
                 <a
-                  href="https://maps.google.com/?q=GIDC+Metoda+Rajkot"
+                  href="https://maps.google.com/?q=Ahmedabad+Gujarat+India"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-orange text-xs font-bold hover:underline"
