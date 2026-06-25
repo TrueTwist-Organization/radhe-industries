@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Zap, Settings, HelpCircle, ArrowRight, Star, Globe, Headphones, Sprout, Home as HomeIcon, Factory, Hammer, Building, Droplet, Battery, Target, Eye, BookOpen, Phone, Mail, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
+import { Shield, Zap, Settings, HelpCircle, ArrowRight, Star, Globe, Headphones, Sprout, Home as HomeIcon, Factory, Hammer, Building, Droplet, Battery, Target, Eye, BookOpen, Phone, Mail, MapPin, MessageCircle, Send, CheckCircle, Loader2 } from 'lucide-react';
 import InquiryForm from '../components/InquiryForm';
+import { submitForm } from '../lib/submitForm';
+import { SITE, WHATSAPP_URL } from '../constants/site';
 
 const TESTIMONIALS = [
   { name: 'Rajesh Patel', role: 'Farmer, Gujarat', text: 'Radhe Industries pumps are reliable, efficient and durable. Perfect performance and excellent service support.' },
@@ -11,7 +13,9 @@ const TESTIMONIALS = [
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', phone: '', city: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({ name: '', phone: '', city: '', pumpType: 'not-sure', message: '' });
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -28,10 +32,19 @@ export default function Home() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: '', phone: '', city: '', message: '' });
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitForm('Home Inquiry', form);
+      setSubmitted(true);
+      setForm({ name: '', phone: '', city: '', pumpType: 'not-sure', message: '' });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
   return (
     <main className="bg-brand-gradient min-h-screen">
@@ -39,7 +52,7 @@ export default function Home() {
       <section className="relative text-white overflow-hidden w-full">
         {/* Image â€” defines section height at natural 3:2 aspect ratio, zero crop */}
         <video
-          src="/src/assets/Image_animation_bird_water_pump_202606251012.mp4"
+          src="/videos/hero-animation.mp4"
           autoPlay
           muted
           loop
@@ -563,7 +576,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Phone (Darshan Patel)</p>
-                      <a href="tel:+919274767732" className="text-white font-bold text-base hover:text-orange transition-colors">+91 92747 67732</a>
+                      <a href={`tel:${SITE.phoneTel}`} className="text-white font-bold text-base hover:text-orange transition-colors">{SITE.whatsappDisplay}</a>
                     </div>
                   </div>
 
@@ -573,7 +586,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">WhatsApp</p>
-                      <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">+91 92747 67732</a>
+                      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
                     </div>
                   </div>
 
@@ -583,7 +596,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Email</p>
-                      <a href="mailto:info@radheindustries.com" className="text-white font-bold text-sm hover:text-sky-400 transition-colors">info@radheindustries.com</a>
+                      <a href={`mailto:${SITE.email}`} className="text-white font-bold text-sm hover:text-sky-400 transition-colors">{SITE.email}</a>
                     </div>
                   </div>
 
@@ -593,7 +606,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">Factory &amp; Office</p>
-                      <p className="text-white font-semibold text-sm leading-relaxed">Ahmedabad, Gujarat, India.</p>
+                      <p className="text-white font-semibold text-sm leading-relaxed">{SITE.location}</p>
                     </div>
                   </div>
                 </div>
@@ -624,7 +637,7 @@ export default function Home() {
                   <h4 className="text-xl font-extrabold font-heading text-navy mb-2">Inquiry Submitted!</h4>
                   <p className="text-steel text-sm mb-6 max-w-xs">Our sales engineer will contact you with model recommendations and pricing.</p>
                   <a
-                    href="https://wa.me/919274767732"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-3.5 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -634,6 +647,9 @@ export default function Home() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5 h-full flex flex-col justify-center">
+                  {error && (
+                    <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-xl px-4 py-3">{error}</p>
+                  )}
                   <div>
                     <h3 className="text-2xl font-extrabold font-heading text-navy uppercase">Send Inquiry</h3>
                     <p className="text-steel text-sm mt-1">We respond within 24 hours</p>
@@ -675,10 +691,15 @@ export default function Home() {
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-[10px] font-extrabold uppercase tracking-widest text-navy">Pump Type</label>
-                      <select className="px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm focus:outline-none focus:border-orange/40 transition-colors">
-                        <option>Submersible (3HP – 15HP)</option>
-                        <option>Monoset (0.5HP – 5HP)</option>
-                        <option>Not Sure – Need Help</option>
+                      <select
+                        name="pumpType"
+                        value={form.pumpType}
+                        onChange={handleChange}
+                        className="px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm focus:outline-none focus:border-orange/40 transition-colors"
+                      >
+                        <option value="submersible">Submersible (3HP – 15HP)</option>
+                        <option value="monoset">Monoset (0.5HP – 5HP)</option>
+                        <option value="not-sure">Not Sure – Need Help</option>
                       </select>
                     </div>
                   </div>
@@ -697,14 +718,16 @@ export default function Home() {
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2.5 bg-orange hover:bg-[#e04d00] text-white font-extrabold py-4 rounded-xl text-sm transition-all uppercase tracking-widest shadow-lg shadow-orange/20 hover:-translate-y-0.5"
+                    disabled={submitting}
+                    className="w-full flex items-center justify-center gap-2.5 bg-orange hover:bg-[#e04d00] disabled:opacity-70 disabled:cursor-not-allowed text-white font-extrabold py-4 rounded-xl text-sm transition-all uppercase tracking-widest shadow-lg shadow-orange/20 hover:-translate-y-0.5"
                   >
-                    <Send size={15} /> Submit Inquiry
+                    {submitting ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
+                    {submitting ? 'Sending...' : 'Submit Inquiry'}
                   </button>
 
                   <p className="text-center text-[10px] text-steel pt-1">
                     Prefer WhatsApp?{' '}
-                    <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
+                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
                   </p>
                 </form>
               )}

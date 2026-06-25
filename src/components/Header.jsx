@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { ChevronDown, Phone, MessageCircle, X, Menu } from 'lucide-react';
+import { ChevronDown, Phone, X, Menu } from 'lucide-react';
 import logo from '../assets/a7a57638-a235-4d2e-bcb4-80cad06d9196.png';
+import { SITE, WHATSAPP_URL } from '../constants/site';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -64,11 +65,11 @@ export default function Header() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-5">
             <a
-              href="tel:+919274767732"
+              href={`tel:${SITE.phoneTel}`}
               className="flex items-center gap-2 text-graphite font-bold text-xs tracking-wider hover:text-orange transition-colors"
             >
               <Phone size={14} className="text-orange" />
-              Darshan Patel: +91 92747 67732
+              Darshan Patel: {SITE.whatsappDisplay}
             </a>
             <Link
               to="/contact"
@@ -103,8 +104,8 @@ export default function Header() {
               <NavLink to="/brochure" className="text-graphite/85 text-sm font-bold tracking-wider py-2 border-b border-gray-50 uppercase" onClick={() => setMobileOpen(false)}>Blog</NavLink>
               <NavLink to="/contact" className="text-graphite/85 text-sm font-bold tracking-wider py-2 uppercase" onClick={() => setMobileOpen(false)}>Contact Us</NavLink>
               <div className="flex gap-3 mt-4">
-                <a href="tel:+919274767732" className="flex-1 text-center border border-gray-200 text-graphite font-bold py-3 rounded text-xs">Call Darshan Patel</a>
-                <a href="https://wa.me/919274767732" target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-[#25D366] text-white font-bold py-3 rounded text-xs">WhatsApp</a>
+                <a href={`tel:${SITE.phoneTel}`} className="flex-1 text-center border border-gray-200 text-graphite font-bold py-3 rounded text-xs">Call Darshan Patel</a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-[#25D366] text-white font-bold py-3 rounded text-xs">WhatsApp</a>
               </div>
             </nav>
           </div>

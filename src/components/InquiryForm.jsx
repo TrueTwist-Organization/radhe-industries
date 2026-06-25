@@ -1,16 +1,28 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { CheckCircle, Send } from 'lucide-react';
+import { CheckCircle, Send, Loader2 } from 'lucide-react';
+import { submitForm } from '../lib/submitForm';
+import { WHATSAPP_URL } from '../constants/site';
 
 export default function InquiryForm({ type = 'general' }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const onSubmit = (data) => {
-    console.log('Form submitted:', data);
-    setSubmitted(true);
-    reset();
-    setTimeout(() => setSubmitted(false), 6000);
+  const onSubmit = async (data) => {
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitForm('Product Inquiry', { inquiry_type: type, ...data });
+      setSubmitted(true);
+      reset();
+      setTimeout(() => setSubmitted(false), 6000);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -20,7 +32,7 @@ export default function InquiryForm({ type = 'general' }) {
         <h3 className="text-2xl font-bold font-heading text-graphite mb-2">Inquiry Received!</h3>
         <p className="text-steel">Thank you. Our pump expert will contact you within 24 hours with the right model guidance.</p>
         <a
-          href="https://wa.me/919999999999"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 mt-6 bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full text-sm hover:-translate-y-0.5 transition-all"
@@ -34,6 +46,9 @@ export default function InquiryForm({ type = 'general' }) {
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-card border border-gray-100">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {error && (
+          <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-xl px-4 py-3">{error}</p>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-graphite mb-1.5">Full Name *</label>
@@ -142,10 +157,11 @@ export default function InquiryForm({ type = 'general' }) {
 
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 text-white font-semibold py-4 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-blue-glow"
+          disabled={submitting}
+          className="w-full flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 disabled:opacity-70 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-blue-glow"
         >
-          <Send size={16} />
-          Submit Inquiry
+          {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+          {submitting ? 'Sending...' : 'Submit Inquiry'}
         </button>
       </form>
     </div>

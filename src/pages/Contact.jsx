@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle, Clock, Loader2 } from 'lucide-react';
+import { submitForm } from '../lib/submitForm';
+import { SITE, WHATSAPP_URL } from '../constants/site';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     name: '', phone: '', whatsapp: '', city: '',
     category: 'submersible', hp: 'not-sure',
@@ -15,9 +19,18 @@ export default function Contact() {
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitForm('Contact Inquiry', form);
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -81,7 +94,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Call Support (Darshan Patel)</p>
-                <a href="tel:+919274767732" className="text-navy font-bold text-sm hover:text-orange transition-colors">+91 92747 67732</a>
+                <a href={`tel:${SITE.phoneTel}`} className="text-navy font-bold text-sm hover:text-orange transition-colors">{SITE.whatsappDisplay}</a>
               </div>
             </div>
 
@@ -91,7 +104,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">WhatsApp (Darshan Patel)</p>
-                <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">+91 92747 67732</a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
               </div>
             </div>
 
@@ -101,7 +114,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Email Inquiry</p>
-                <a href="mailto:info@radheindustries.com" className="text-navy font-bold text-sm hover:text-[#0B4F93] transition-colors">info@radheindustries.com</a>
+                <a href={`mailto:${SITE.email}`} className="text-navy font-bold text-sm hover:text-[#0B4F93] transition-colors">{SITE.email}</a>
               </div>
             </div>
 
@@ -111,7 +124,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">Factory &amp; Office</p>
-                <p className="text-steel text-xs leading-relaxed">Ahmedabad, Gujarat, India.</p>
+                <p className="text-steel text-xs leading-relaxed">{SITE.location}</p>
               </div>
             </div>
 
@@ -130,7 +143,7 @@ export default function Contact() {
               <p className="text-white/50 text-[10px] uppercase tracking-widest font-extrabold mb-3">Location Map</p>
               <div className="bg-white/5 rounded-xl h-36 flex items-center justify-center border border-white/10">
                 <a
-                  href="https://maps.google.com/?q=Ahmedabad+Gujarat+India"
+                  href={SITE.mapsUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-orange text-xs font-bold hover:underline"
@@ -154,7 +167,7 @@ export default function Contact() {
                     Our sales engineer has received your details and will contact you with models and pricing within 2 hours.
                   </p>
                   <a
-                    href="https://wa.me/919274767732"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -164,6 +177,9 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="space-y-6">
+                  {error && (
+                    <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-xl px-4 py-3">{error}</p>
+                  )}
                   <div className="flex items-start justify-between border-b border-gray-100 pb-5">
                     <div>
                       <h3 className="text-xl font-extrabold font-heading text-navy uppercase">Send Detailed Inquiry</h3>
@@ -266,14 +282,15 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm focus:outline-none focus:border-orange/40 transition-colors resize-none" />
                   </div>
 
-                  <button type="submit"
-                    className="w-full flex items-center justify-center gap-2.5 bg-orange hover:bg-[#e04d00] text-white font-extrabold py-4 rounded-xl text-sm transition-all uppercase tracking-widest shadow-lg shadow-orange/20 hover:-translate-y-0.5">
-                    <Send size={15} /> Submit Inquiry Request
+                  <button type="submit" disabled={submitting}
+                    className="w-full flex items-center justify-center gap-2.5 bg-orange hover:bg-[#e04d00] disabled:opacity-70 disabled:cursor-not-allowed text-white font-extrabold py-4 rounded-xl text-sm transition-all uppercase tracking-widest shadow-lg shadow-orange/20 hover:-translate-y-0.5">
+                    {submitting ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />}
+                    {submitting ? 'Sending...' : 'Submit Inquiry Request'}
                   </button>
 
                   <p className="text-center text-[10px] text-steel">
                     Prefer WhatsApp?{' '}
-                    <a href="https://wa.me/919274767732" target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
+                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
                   </p>
                 </form>
               )}

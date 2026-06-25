@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Download, FileText, CheckCircle } from 'lucide-react';
+import { Download, FileText, CheckCircle, Loader2, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { submitForm } from '../lib/submitForm';
+import { WHATSAPP_URL } from '../constants/site';
 
 export default function Brochure() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  const onSubmit = (data) => {
-    console.log('Brochure request:', data);
-    setSubmitted(true);
-    reset();
+  const onSubmit = async (data) => {
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitForm('Brochure Request', data);
+      setSubmitted(true);
+      reset();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -55,7 +68,7 @@ export default function Brochure() {
               href="#request-form"
               className="inline-flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 text-white font-semibold py-3.5 rounded-xl text-sm transition-all"
             >
-              <Download size={16} /> Download PDF
+              <Download size={16} /> Request Catalog
             </a>
           </div>
 
@@ -74,7 +87,7 @@ export default function Brochure() {
               href="#request-form"
               className="inline-flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 text-white font-semibold py-3.5 rounded-xl text-sm transition-all"
             >
-              <Download size={16} /> Download PDF
+              <Download size={16} /> Request Catalog
             </a>
           </div>
         </div>
@@ -84,20 +97,35 @@ export default function Brochure() {
           {submitted ? (
             <div className="text-center py-6">
               <CheckCircle className="w-12 h-12 text-aqua mx-auto mb-4 animate-bounce" />
-              <h3 className="text-xl font-bold font-heading text-graphite mb-2">Catalog Access Ready!</h3>
-              <p className="text-steel text-sm mb-6">We have sent the PDF download link to your phone number. You can also download it directly below.</p>
-              <a
-                href="#"
-                onClick={(e) => { e.preventDefault(); alert("Downloading catalog PDF..."); }}
-                className="inline-flex items-center gap-2 bg-aqua hover:bg-aqua/90 text-navy font-bold px-6 py-3 rounded-full text-sm transition-all"
-              >
-                Click to Download Catalog
-              </a>
+              <h3 className="text-xl font-bold font-heading text-graphite mb-2">Request Received!</h3>
+              <p className="text-steel text-sm mb-6">
+                Our team will share the catalog PDF with you shortly. For immediate assistance, contact us on WhatsApp.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-6 py-3 rounded-full text-sm transition-all"
+                >
+                  <MessageCircle size={16} /> Chat on WhatsApp
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-aqua hover:bg-aqua/90 text-navy font-bold px-6 py-3 rounded-full text-sm transition-all"
+                >
+                  Contact Sales
+                </Link>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <h3 className="text-xl font-bold font-heading text-center text-graphite mb-2">Enter Details to Download Brochure</h3>
               <p className="text-steel text-center text-xs mb-6">Provide your basic info to request download link and specifications sheet.</p>
+
+              {error && (
+                <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-xl px-4 py-3">{error}</p>
+              )}
               
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-graphite mb-1.5">Your Name *</label>
@@ -131,9 +159,11 @@ export default function Brochure() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 text-white font-semibold py-4 rounded-xl text-sm transition-all"
+                disabled={submitting}
+                className="w-full flex items-center justify-center gap-2 bg-pump-blue hover:bg-pump-blue/90 disabled:opacity-70 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl text-sm transition-all"
               >
-                Request Download Link
+                {submitting ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
+                {submitting ? 'Sending Request...' : 'Request Download Link'}
               </button>
             </form>
           )}

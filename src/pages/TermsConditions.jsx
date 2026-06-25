@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Mail, MapPin, Phone } from 'lucide-react';
+import { SITE } from '../constants/site';
 
 export default function TermsConditions() {
   return (
@@ -27,7 +28,7 @@ export default function TermsConditions() {
             Terms &amp; <span className="text-orange">Conditions</span>
           </h1>
           <p className="text-white/70 text-sm max-w-xl mx-auto">
-            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Ahmedabad, Gujarat
+            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, {SITE.locationShort}
           </p>
         </div>
       </section>
@@ -45,9 +46,9 @@ export default function TermsConditions() {
           {[
             {
               title: '1. About Radhe Industries',
-              content: `Radhe Industries is a manufacturer and supplier of submersible pumps and monoset pumps based in Ahmedabad, Gujarat, India. Our website (radheindustries.com) provides product information, inquiry submission, and dealer contact services.
+              content: `Radhe Industries is a manufacturer and supplier of submersible pumps and monoset pumps based in Ahmedabad, Gujarat, India. Our website (radheindustry.com) provides product information, inquiry submission, and dealer contact services.
 
-Registered Office: Ahmedabad, Gujarat, India.`,
+Registered Office: ${SITE.location}.`,
             },
             {
               title: '2. Use of Website',
@@ -153,11 +154,11 @@ We recommend reviewing these terms periodically.`,
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm text-steel">
                 <MapPin size={14} className="text-orange shrink-0" />
-                Ahmedabad, Gujarat, India
+                {SITE.location}
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Mail size={14} className="text-orange shrink-0" />
-                <a href="mailto:info@radheindustries.com" className="hover:text-orange transition-colors">info@radheindustries.com</a>
+                <a href="mailto:crnpumps@gmail.com" className="hover:text-orange transition-colors">crnpumps@gmail.com</a>
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Phone size={14} className="text-orange shrink-0" />

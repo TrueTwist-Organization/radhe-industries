@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import { WHATSAPP_URL } from '../constants/site';
 
 export default function CTASection({ title, subtitle, primaryBtn, secondaryBtn, dark = true }) {
   return (
@@ -21,7 +22,7 @@ export default function CTASection({ title, subtitle, primaryBtn, secondaryBtn, 
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/919999999999"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:-translate-y-1 shadow-lg text-sm"

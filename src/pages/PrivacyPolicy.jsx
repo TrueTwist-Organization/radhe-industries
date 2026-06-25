@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Mail, MapPin, Phone } from 'lucide-react';
+import { SITE } from '../constants/site';
 
 export default function PrivacyPolicy() {
   return (
@@ -27,7 +28,7 @@ export default function PrivacyPolicy() {
             Privacy <span className="text-orange">Policy</span>
           </h1>
           <p className="text-white/70 text-sm max-w-xl mx-auto">
-            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, Ahmedabad, Gujarat
+            Last updated: June 2025 &nbsp;|&nbsp; Radhe Industries, {SITE.locationShort}
           </p>
         </div>
       </section>
@@ -126,11 +127,11 @@ To exercise any of these rights, please contact us at the details below.`,
             <div className="space-y-2">
               <div className="flex items-center gap-3 text-sm text-steel">
                 <MapPin size={14} className="text-orange shrink-0" />
-                Ahmedabad, Gujarat, India
+                {SITE.location}
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Mail size={14} className="text-orange shrink-0" />
-                <a href="mailto:info@radheindustries.com" className="hover:text-orange transition-colors">info@radheindustries.com</a>
+                <a href="mailto:crnpumps@gmail.com" className="hover:text-orange transition-colors">crnpumps@gmail.com</a>
               </div>
               <div className="flex items-center gap-3 text-sm text-steel">
                 <Phone size={14} className="text-orange shrink-0" />
