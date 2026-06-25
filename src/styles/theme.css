@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #051A2E;
+  --pump-blue: #0B5FFF;
+  --aqua: #12D6C5;
+  --graphite: #111827;
+  --mist: #F4F8FA;
+  --steel: #6B7280;
+  --orange: #FF5A00;
+  --red: #E11D48;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, rgba(11,79,147,0.15) 0%, #f4f6fb 50%, rgba(255,110,0,0.18) 100%) !important;
+  background-attachment: fixed !important;
+  color: #111827;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #051A2E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF5A00;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E11D48;
+}
+
+/* Custom styles for Hero background */
+.hero-water-bg {
+  background: linear-gradient(180deg, #051A2E 0%, #082E54 100%);
+  position: relative;
+}
+
+/* Brand gradient background — replaces plain white sections */
+.bg-brand-gradient {
+  background: transparent !important;
+}
+
+/* Force sections/main with bg-white or bg-mist to be transparent so body gradient shows */
+main.bg-white,
+section.bg-white,
+main.bg-mist,
+section.bg-mist {
+  background: transparent !important;
+}
+
+/* Underline decoration */
+.title-underline::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #FF5A00;
+  margin-top: 8px;
+}
