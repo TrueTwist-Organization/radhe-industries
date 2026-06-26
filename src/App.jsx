@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PageMeta from './components/PageMeta';
-import { WHATSAPP_URL } from './constants/site';
+import { SITE } from './constants/site';
+import { getWhatsAppUrl, openWhatsApp } from './lib/whatsapp';
 
 // Pages
 import Home from './pages/Home';
@@ -60,7 +61,8 @@ export default function App() {
 
         {/* Floating WhatsApp Button */}
         <a
-          href={WHATSAPP_URL}
+          href={getWhatsAppUrl(SITE.whatsapp)}
+          onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }}
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"

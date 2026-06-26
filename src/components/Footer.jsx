@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
-import logo from '../assets/a7a57638-a235-4d2e-bcb4-80cad06d9196.png';
+import logo from '../assets/RADHE JPG 222.jpg.jpeg';
 import { submitForm } from '../lib/submitForm';
-import { SITE, WHATSAPP_URL } from '../constants/site';
+import { SITE } from '../constants/site';
+import { getWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -38,13 +39,13 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="lg:col-span-3 lg:border-r lg:border-white/10 lg:pr-8">
             <div className="flex items-center mb-4">
-              <img src={logo} alt="Radhe Industries" className="h-12 w-auto object-contain bg-white rounded-lg p-1.5" />
+              <img src={logo} alt="Radhe Industries" className="h-14 w-auto object-contain rounded-lg" />
             </div>
             <p className="leading-relaxed mb-6 max-w-xs text-white/60">
               Delivering excellence in every pump. Built for today, Ready for tomorrow.
             </p>
             <div className="flex gap-4 items-center">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#25D366] transition-colors" aria-label="WhatsApp">
+              <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#25D366] transition-colors" aria-label="WhatsApp">
                 <MessageCircle size={16} />
               </a>
               <a href={`tel:${SITE.phoneTel}`} className="text-white/50 hover:text-orange transition-colors" aria-label="Phone">
@@ -93,7 +94,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-white/75">
                 <MessageCircle size={14} className="text-white/40 shrink-0" />
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-orange whitespace-nowrap">WhatsApp: {SITE.whatsappDisplay}</a>
+                <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noopener noreferrer" className="hover:text-orange whitespace-nowrap">WhatsApp: {SITE.whatsappDisplay}</a>
               </li>
               <li className="flex items-center gap-2 text-white/75">
                 <Mail size={14} className="text-white/40 shrink-0" />

@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { CheckCircle, Send, Loader2 } from 'lucide-react';
-import { submitForm } from '../lib/submitForm';
-import { WHATSAPP_URL } from '../constants/site';
+import { SITE } from '../constants/site';
+import { getWhatsAppUrl, openWhatsApp, formatInquiryMessage } from '../lib/whatsapp';
 
 export default function InquiryForm({ type = 'general' }) {
   const [submitted, setSubmitted] = useState(false);
@@ -10,14 +10,30 @@ export default function InquiryForm({ type = 'general' }) {
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+  const OWNER_WHATSAPP = '919274767732';
+
   const onSubmit = async (data) => {
     setSubmitting(true);
     setError('');
     try {
-      await submitForm('Product Inquiry', { inquiry_type: type, ...data });
+      const msg = formatInquiryMessage({
+        title: 'NEW PUMP INQUIRY',
+        name: data.name,
+        phone: data.phone,
+        whatsapp: data.whatsapp,
+        city: data.city,
+        category: data.category || type,
+        hp: data.hp,
+        application: data.application,
+        source: data.source,
+        message: data.message
+      });
+
+      openWhatsApp(OWNER_WHATSAPP, msg);
+
       setSubmitted(true);
       reset();
-      setTimeout(() => setSubmitted(false), 6000);
+      setTimeout(() => setSubmitted(false), 8000);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -32,7 +48,8 @@ export default function InquiryForm({ type = 'general' }) {
         <h3 className="text-2xl font-bold font-heading text-graphite mb-2">Inquiry Received!</h3>
         <p className="text-steel">Thank you. Our pump expert will contact you within 24 hours with the right model guidance.</p>
         <a
-          href={WHATSAPP_URL}
+          href={getWhatsAppUrl(SITE.whatsapp)}
+          onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 mt-6 bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full text-sm hover:-translate-y-0.5 transition-all"
@@ -84,7 +101,7 @@ export default function InquiryForm({ type = 'general' }) {
             <label className="block text-xs font-semibold uppercase tracking-wider text-graphite mb-1.5">City / Location *</label>
             <input
               {...register('city', { required: 'City is required' })}
-              placeholder="Enter city"
+              placeholder="Enter city and state"
               className={`w-full px-4 py-3 rounded-xl border text-sm bg-mist focus:outline-none focus:ring-2 focus:ring-pump-blue/30 focus:border-pump-blue transition-all ${errors.city ? 'border-red-400' : 'border-gray-200'}`}
             />
           </div>

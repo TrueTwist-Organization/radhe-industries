@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submersible Pump Catalog – Radhe Industries</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f4f6fb; color: #1a2744; }
+
+    .cover {
+      background: linear-gradient(135deg, #051A2E 0%, #0B4F93 100%);
+      color: #fff;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .cover-badge { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #FF8A00; margin-bottom: 16px; }
+    .cover h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+    .cover h1 span { color: #FF8A00; }
+    .cover p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 500px; line-height: 1.7; }
+    .cover-footer { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .cover-footer .brand { font-size: 22px; font-weight: 900; color: #FF8A00; }
+    .cover-footer .tagline { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .cover-footer .date { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+    .section { padding: 40px 50px; background: #fff; margin: 20px; border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .section-title { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FF8A00; margin-bottom: 8px; }
+    .section h2 { font-size: 26px; font-weight: 900; color: #051A2E; margin-bottom: 4px; }
+    .accent-bar { width: 48px; height: 4px; background: #FF8A00; border-radius: 2px; margin: 10px 0 20px; }
+
+    .intro-text { font-size: 14px; color: #556; line-height: 1.8; max-width: 700px; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .feature-card { background: #f4f6fb; border-radius: 12px; padding: 20px; }
+    .feature-card .icon { font-size: 24px; margin-bottom: 10px; }
+    .feature-card h4 { font-size: 13px; font-weight: 700; color: #051A2E; margin-bottom: 6px; }
+    .feature-card p { font-size: 12px; color: #667; line-height: 1.6; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+    thead tr { background: #051A2E; color: #fff; }
+    thead th { padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    tbody tr { border-bottom: 1px solid #eef0f4; }
+    tbody tr:nth-child(even) { background: #f8f9fc; }
+    tbody tr:hover { background: #eef4ff; }
+    tbody td { padding: 11px 14px; color: #334; font-weight: 500; }
+    .badge { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .badge-bestseller { background: #fff3e0; color: #e65100; }
+    .badge-popular { background: #e3f2fd; color: #1565c0; }
+    .badge-entry { background: #e8f5e9; color: #2e7d32; }
+    .badge-heavy { background: #f3e5f5; color: #6a1b9a; }
+    .badge-industrial { background: #fce4ec; color: #b71c1c; }
+    .badge-promax { background: #eceff1; color: #37474f; }
+    .badge-v6 { background: #e0f2f1; color: #00695c; }
+
+    .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
+    .spec-item { background: #f4f6fb; border-radius: 10px; padding: 14px 16px; }
+    .spec-item .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #889; margin-bottom: 4px; }
+    .spec-item .value { font-size: 14px; font-weight: 800; color: #051A2E; }
+
+    .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .app-card { background: linear-gradient(135deg, #f4f6fb, #eef4ff); border-radius: 12px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
+    .app-card .icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .app-card h4 { font-size: 13px; font-weight: 700; color: #051A2E; margin-bottom: 4px; }
+    .app-card p { font-size: 11px; color: #667; line-height: 1.5; }
+
+    .contact-section { background: linear-gradient(135deg, #051A2E, #0B4F93); color: #fff; padding: 40px 50px; margin: 20px; border-radius: 16px; }
+    .contact-section h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .contact-section p { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .contact-item { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; }
+    .contact-item .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #FF8A00; margin-bottom: 6px; }
+    .contact-item .cvalue { font-size: 13px; font-weight: 600; color: #fff; }
+
+    .footer-bar { text-align: center; padding: 20px; font-size: 11px; color: #aaa; }
+    @media print {
+      body { background: #fff; }
+      .section, .contact-section { margin: 10px 0; border-radius: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div>
+      <div class="cover-badge">Product Catalog 2025–26</div>
+      <h1><span>SUBMERSIBLE</span><br/>PUMP CATALOG</h1>
+      <p>High-performance, energy-efficient submersible pumps from 3 HP to 15 HP. Engineered for agriculture, residential, and industrial borewell applications across India.</p>
+    </div>
+    <div class="cover-footer">
+      <div>
+        <div class="brand">RADHE INDUSTRIES</div>
+        <div class="tagline">Delivering Excellence in Every Pump</div>
+      </div>
+      <div class="date">Edition: 2025–2026</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-title">About Our Products</div>
+    <h2>Why Choose Radhe Industries?</h2>
+    <div class="accent-bar"></div>
+    <p class="intro-text">
+      Radhe Industries is a trusted pump dealer and distributor offering premium submersible pumps from leading brands including <strong>Kirloskar, Crompton, Lubi, Shakti, Havells</strong> and <strong>V-Guard</strong>. Our submersible pump range covers 3 HP to 15 HP for deep borewell applications with maximum reliability.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🏆</div>
+        <h4>Top Brand Motors</h4>
+        <p>Kirloskar, Crompton, Lubi motors — known for durability and performance in Indian conditions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h4>Energy Efficient</h4>
+        <p>ISI-marked motors with high efficiency ratings for lower electricity consumption.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔧</div>
+        <h4>Full Service Support</h4>
+        <p>Expert installation advice, pump selection guidance, and after-sale support available.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🌊</div>
+        <h4>Deep Borewell Ready</h4>
+        <p>4" and 6" casing variants for shallow to ultra-deep borewells up to 220 m head.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">✅</div>
+        <h4>ISI Certified</h4>
+        <p>All products meet BIS standards and carry relevant certifications for quality assurance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📦</div>
+        <h4>Ready Stock</h4>
+        <p>Most models available in ready stock for fast delivery across Gujarat and nearby states.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL TABLE -->
+  <div class="section">
+    <div class="section-title">Complete Product Range</div>
+    <h2>Submersible Pump Models</h2>
+    <div class="accent-bar"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>HP</th>
+          <th>Stages</th>
+          <th>Max Head</th>
+          <th>Discharge</th>
+          <th>Phase</th>
+          <th>Bore Casing</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CRN-3HP</td>
+          <td><strong>3 HP</strong></td>
+          <td>7</td>
+          <td>90 m</td>
+          <td>2,000 LPH</td>
+          <td>Single / Three</td>
+          <td>4" Casing</td>
+          <td><span class="badge badge-entry">Entry Level</span></td>
+        </tr>
+        <tr>
+          <td>CRN-5HP</td>
+          <td><strong>5 HP</strong></td>
+          <td>10</td>
+          <td>120 m</td>
+          <td>3,000 LPH</td>
+          <td>Single / Three</td>
+          <td>4" Casing</td>
+          <td><span class="badge badge-bestseller">Best Seller</span></td>
+        </tr>
+        <tr>
+          <td>CRN-7.5HP</td>
+          <td><strong>7.5 HP</strong></td>
+          <td>12</td>
+          <td>150 m</td>
+          <td>4,500 LPH</td>
+          <td>Three Phase</td>
+          <td>6" Casing</td>
+          <td><span class="badge badge-popular">Popular</span></td>
+        </tr>
+        <tr>
+          <td>CRN-10HP</td>
+          <td><strong>10 HP</strong></td>
+          <td>14</td>
+          <td>180 m</td>
+          <td>6,000 LPH</td>
+          <td>Three Phase</td>
+          <td>6" Casing</td>
+          <td><span class="badge badge-heavy">Heavy Duty</span></td>
+        </tr>
+        <tr>
+          <td>CRN-12.5HP</td>
+          <td><strong>12.5 HP</strong></td>
+          <td>16</td>
+          <td>200 m</td>
+          <td>7,500 LPH</td>
+          <td>Three Phase</td>
+          <td>6" Casing</td>
+          <td><span class="badge badge-industrial">Industrial</span></td>
+        </tr>
+        <tr>
+          <td>CRN-15HP</td>
+          <td><strong>15 HP</strong></td>
+          <td>18</td>
+          <td>220 m</td>
+          <td>9,000 LPH</td>
+          <td>Three Phase</td>
+          <td>6" Casing</td>
+          <td><span class="badge badge-promax">Pro Max</span></td>
+        </tr>
+        <tr>
+          <td>CRN-5HP (V6)</td>
+          <td><strong>5 HP V6</strong></td>
+          <td>6</td>
+          <td>70 m</td>
+          <td>2,500 LPH</td>
+          <td>Single Phase</td>
+          <td>4" Casing</td>
+          <td><span class="badge badge-v6">V6 Series</span></td>
+        </tr>
+        <tr>
+          <td>CRN-7.5HP (V6)</td>
+          <td><strong>7.5 HP V6</strong></td>
+          <td>8</td>
+          <td>90 m</td>
+          <td>3,500 LPH</td>
+          <td>Single Phase</td>
+          <td>4" Casing</td>
+          <td><span class="badge badge-v6">V6 Series</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GENERAL SPECS -->
+  <div class="section">
+    <div class="section-title">Technical Details</div>
+    <h2>General Specifications</h2>
+    <div class="accent-bar"></div>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">Motor Type</div><div class="value">Water Cooled Submersible</div></div>
+      <div class="spec-item"><div class="label">Voltage</div><div class="value">Single: 220V | Three: 415V</div></div>
+      <div class="spec-item"><div class="label">Frequency</div><div class="value">50 Hz</div></div>
+      <div class="spec-item"><div class="label">Insulation Class</div><div class="value">Class F</div></div>
+      <div class="spec-item"><div class="label">Body Material</div><div class="value">SS 304 / Noryl</div></div>
+      <div class="spec-item"><div class="label">Impeller</div><div class="value">SS / Engineered Plastic</div></div>
+      <div class="spec-item"><div class="label">Motor Protection</div><div class="value">IP68 (Waterproof)</div></div>
+      <div class="spec-item"><div class="label">Warranty</div><div class="value">1 Year Motor Warranty</div></div>
+      <div class="spec-item"><div class="label">Certifications</div><div class="value">BIS / ISI Marked</div></div>
+      <div class="spec-item"><div class="label">Cooling</div><div class="value">By Pumped Water</div></div>
+    </div>
+  </div>
+
+  <!-- APPLICATIONS -->
+  <div class="section">
+    <div class="section-title">Use Cases</div>
+    <h2>Applications</h2>
+    <div class="accent-bar"></div>
+    <div class="app-grid">
+      <div class="app-card"><div class="icon">🌾</div><div><h4>Agriculture & Irrigation</h4><p>Farm irrigation, drip systems, sprinkler networks for fields of all sizes.</p></div></div>
+      <div class="app-card"><div class="icon">🏠</div><div><h4>Residential Water Supply</h4><p>Borewell water supply for homes, apartments and housing colonies.</p></div></div>
+      <div class="app-card"><div class="icon">🏗️</div><div><h4>Construction Sites</h4><p>Dewatering, excavation water removal and construction water supply.</p></div></div>
+      <div class="app-card"><div class="icon">🏭</div><div><h4>Industrial Use</h4><p>Water supply for factories, processing units and industrial plants.</p></div></div>
+      <div class="app-card"><div class="icon">🌍</div><div><h4>Community Water Projects</h4><p>Village water supply schemes, panchayat water systems and townships.</p></div></div>
+      <div class="app-card"><div class="icon">⛲</div><div><h4>Hotels & Resorts</h4><p>High-head water delivery for multi-floor hotels, resorts and commercial buildings.</p></div></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Get In Touch</h2>
+    <p>For pricing, custom requirements, installation queries or bulk orders — contact us directly.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="clabel">Phone / WhatsApp</div>
+        <div class="cvalue">+91 92747 67732</div>
+      </div>
+      <div class="contact-item">
+        <div class="clabel">Contact Person</div>
+        <div class="cvalue">Darshan Patel</div>
+      </div>
+      <div class="contact-item">
+        <div class="clabel">Website</div>
+        <div class="cvalue">radheindustries.in</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">© 2026 Radhe Industries. All Rights Reserved. | This catalog is for reference purposes only. Specifications subject to change without prior notice.</div>
+
+</body>
+</html>

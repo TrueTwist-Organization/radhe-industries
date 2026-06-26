@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Zap, Settings, HelpCircle, ArrowRight, Star, Globe, Headphones, Sprout, Home as HomeIcon, Factory, Hammer, Building, Droplet, Battery, Target, Eye, BookOpen, Phone, Mail, MapPin, MessageCircle, Send, CheckCircle, Loader2 } from 'lucide-react';
 import InquiryForm from '../components/InquiryForm';
-import { submitForm } from '../lib/submitForm';
-import { SITE, WHATSAPP_URL } from '../constants/site';
+import { SITE } from '../constants/site';
+import { getWhatsAppUrl, openWhatsApp, formatInquiryMessage } from '../lib/whatsapp';
 
 const TESTIMONIALS = [
   { name: 'Rajesh Patel', role: 'Farmer, Gujarat', text: 'Radhe Industries pumps are reliable, efficient and durable. Perfect performance and excellent service support.' },
@@ -37,7 +37,18 @@ export default function Home() {
     setSubmitting(true);
     setError('');
     try {
-      await submitForm('Home Inquiry', form);
+      const msg = formatInquiryMessage({
+        title: 'NEW INQUIRY',
+        name: form.name,
+        phone: form.phone,
+        city: form.city,
+        category: form.pumpType,
+        message: form.message
+      });
+
+      const OWNER_WHATSAPP = '919274767732';
+      openWhatsApp(OWNER_WHATSAPP, msg);
+
       setSubmitted(true);
       setForm({ name: '', phone: '', city: '', pumpType: 'not-sure', message: '' });
     } catch (err) {
@@ -586,7 +597,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mb-0.5">WhatsApp</p>
-                      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
+                      <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noreferrer" className="text-white font-bold text-base hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
                     </div>
                   </div>
 
@@ -637,7 +648,8 @@ export default function Home() {
                   <h4 className="text-xl font-extrabold font-heading text-navy mb-2">Inquiry Submitted!</h4>
                   <p className="text-steel text-sm mb-6 max-w-xs">Our sales engineer will contact you with model recommendations and pricing.</p>
                   <a
-                    href={WHATSAPP_URL}
+                    href={getWhatsAppUrl(SITE.whatsapp)}
+                    onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-3.5 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -685,7 +697,7 @@ export default function Home() {
                         value={form.city}
                         onChange={handleChange}
                         required
-                        placeholder="e.g. Rajkot, Gujarat"
+                        placeholder="Enter city and state"
                         className="px-4 py-3.5 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm focus:outline-none focus:border-orange/40 transition-colors"
                       />
                     </div>
@@ -727,7 +739,7 @@ export default function Home() {
 
                   <p className="text-center text-[10px] text-steel pt-1">
                     Prefer WhatsApp?{' '}
-                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
+                    <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us →</a>
                   </p>
                 </form>
               )}

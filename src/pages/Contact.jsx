@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle, Clock, Loader2 } from 'lucide-react';
-import { submitForm } from '../lib/submitForm';
-import { SITE, WHATSAPP_URL } from '../constants/site';
+import { SITE } from '../constants/site';
+import { getWhatsAppUrl, openWhatsApp, formatInquiryMessage } from '../lib/whatsapp';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -19,12 +19,30 @@ export default function Contact() {
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
 
+  const OWNER_WHATSAPP = '919274767732';
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setError('');
     try {
-      await submitForm('Contact Inquiry', form);
+      const msg = formatInquiryMessage({
+        title: 'NEW DETAILED INQUIRY',
+        name: form.name,
+        phone: form.phone,
+        whatsapp: form.whatsapp,
+        city: form.city,
+        category: form.category,
+        hp: form.hp,
+        application: form.application,
+        source: form.source,
+        depth: form.depth,
+        message: form.message,
+        isDealer: form.isDealer
+      });
+
+      openWhatsApp(OWNER_WHATSAPP, msg);
+
       setSubmitted(true);
     } catch (err) {
       setError(err.message);
@@ -104,7 +122,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-[10px] font-extrabold uppercase tracking-widest text-steel mb-1">WhatsApp (Darshan Patel)</p>
-                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
+                <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noreferrer" className="text-navy font-bold text-sm hover:text-[#25D366] transition-colors">{SITE.whatsappDisplay}</a>
               </div>
             </div>
 
@@ -167,7 +185,8 @@ export default function Contact() {
                     Our sales engineer has received your details and will contact you with models and pricing within 2 hours.
                   </p>
                   <a
-                    href={WHATSAPP_URL}
+                    href={getWhatsAppUrl(SITE.whatsapp)}
+                    onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-xl text-sm hover:-translate-y-0.5 transition-all"
@@ -220,7 +239,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-[10px] font-extrabold uppercase tracking-widest text-navy mb-1.5">City &amp; State *</label>
                       <input name="city" value={form.city} onChange={handleChange} required
-                        placeholder="e.g. Rajkot, Gujarat"
+                        placeholder="Enter city and state"
                         className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 text-sm focus:outline-none focus:border-orange/40 transition-colors" />
                     </div>
                     <div>
@@ -290,7 +309,7 @@ export default function Contact() {
 
                   <p className="text-center text-[10px] text-steel">
                     Prefer WhatsApp?{' '}
-                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
+                    <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noreferrer" className="text-[#25D366] font-extrabold">Chat with us directly</a>
                   </p>
                 </form>
               )}

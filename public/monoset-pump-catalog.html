@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monoset Pump Catalog – Radhe Industries</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f4f6fb; color: #1a2744; }
+
+    .cover {
+      background: linear-gradient(135deg, #0B4F93 0%, #FF8A00 100%);
+      color: #fff;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .cover-badge { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #fef08a; margin-bottom: 16px; }
+    .cover h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+    .cover h1 span { color: #fef08a; }
+    .cover p { font-size: 14px; color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; }
+    .cover-footer { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .cover-footer .brand { font-size: 22px; font-weight: 900; color: #fef08a; }
+    .cover-footer .tagline { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .cover-footer .date { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+    .section { padding: 40px 50px; background: #fff; margin: 20px; border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .section-title { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FF8A00; margin-bottom: 8px; }
+    .section h2 { font-size: 26px; font-weight: 900; color: #051A2E; margin-bottom: 4px; }
+    .accent-bar { width: 48px; height: 4px; background: #FF8A00; border-radius: 2px; margin: 10px 0 20px; }
+    .intro-text { font-size: 14px; color: #556; line-height: 1.8; max-width: 700px; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .feature-card { background: #f4f6fb; border-radius: 12px; padding: 20px; }
+    .feature-card .icon { font-size: 24px; margin-bottom: 10px; }
+    .feature-card h4 { font-size: 13px; font-weight: 700; color: #051A2E; margin-bottom: 6px; }
+    .feature-card p { font-size: 12px; color: #667; line-height: 1.6; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 16px; }
+    thead tr { background: #0B4F93; color: #fff; }
+    thead th { padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    tbody tr { border-bottom: 1px solid #eef0f4; }
+    tbody tr:nth-child(even) { background: #f8f9fc; }
+    tbody tr:hover { background: #fff8ee; }
+    tbody td { padding: 11px 14px; color: #334; font-weight: 500; }
+    .badge { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .badge-bestseller { background: #fff3e0; color: #e65100; }
+    .badge-popular { background: #e3f2fd; color: #1565c0; }
+    .badge-starter { background: #e8f5e9; color: #2e7d32; }
+    .badge-homeplus { background: #f3e5f5; color: #6a1b9a; }
+    .badge-farm { background: #e8f5e9; color: #1b5e20; }
+    .badge-single { background: #fffde7; color: #f57f17; }
+    .badge-heavy { background: #fce4ec; color: #b71c1c; }
+    .badge-promax { background: #eceff1; color: #37474f; }
+
+    .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
+    .spec-item { background: #f4f6fb; border-radius: 10px; padding: 14px 16px; }
+    .spec-item .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #889; margin-bottom: 4px; }
+    .spec-item .value { font-size: 14px; font-weight: 800; color: #051A2E; }
+
+    .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .app-card { background: linear-gradient(135deg, #f4f6fb, #fff8ee); border-radius: 12px; padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px; }
+    .app-card .icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .app-card h4 { font-size: 13px; font-weight: 700; color: #051A2E; margin-bottom: 4px; }
+    .app-card p { font-size: 11px; color: #667; line-height: 1.5; }
+
+    .vs-section { background: #f4f6fb; border-radius: 14px; padding: 30px; margin-top: 0; }
+    .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .vs-card { background: #fff; border-radius: 12px; padding: 20px; border-left: 4px solid #FF8A00; }
+    .vs-card h4 { font-size: 14px; font-weight: 800; color: #051A2E; margin-bottom: 10px; }
+    .vs-card ul { list-style: none; }
+    .vs-card ul li { font-size: 12px; color: #556; padding: 4px 0; padding-left: 16px; position: relative; line-height: 1.5; }
+    .vs-card ul li::before { content: "✓"; position: absolute; left: 0; color: #FF8A00; font-weight: 700; }
+
+    .contact-section { background: linear-gradient(135deg, #0B4F93, #FF8A00); color: #fff; padding: 40px 50px; margin: 20px; border-radius: 16px; }
+    .contact-section h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .contact-section p { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .contact-item { background: rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; }
+    .contact-item .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fef08a; margin-bottom: 6px; }
+    .contact-item .cvalue { font-size: 13px; font-weight: 600; color: #fff; }
+
+    .footer-bar { text-align: center; padding: 20px; font-size: 11px; color: #aaa; }
+    @media print {
+      body { background: #fff; }
+      .section, .contact-section { margin: 10px 0; border-radius: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div>
+      <div class="cover-badge">Product Catalog 2025–26</div>
+      <h1><span>MONOSET</span><br/>PUMP CATALOG</h1>
+      <p>Compact, self-priming surface monoblock pumps from 0.5 HP to 5 HP — ideal for domestic water supply, garden irrigation, agriculture and light commercial use.</p>
+    </div>
+    <div class="cover-footer">
+      <div>
+        <div class="brand">RADHE INDUSTRIES</div>
+        <div class="tagline">Delivering Excellence in Every Pump</div>
+      </div>
+      <div class="date">Edition: 2025–2026</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-title">About Our Products</div>
+    <h2>Why Choose Radhe Industries?</h2>
+    <div class="accent-bar"></div>
+    <p class="intro-text">
+      Radhe Industries supplies premium monoset (monoblock) pumps from trusted brands including <strong>Kirloskar, Crompton, Lubi, Shakti, Havells</strong> and <strong>V-Guard</strong>. Our monoset range from 0.5 HP to 5 HP is perfect for homes, gardens, small farms, and light commercial use — with no borewell required.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🚿</div>
+        <h4>Self-Priming</h4>
+        <p>Starts automatically without manual water filling. Convenient for daily home use.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h4>Low Power Consumption</h4>
+        <p>Energy-efficient motor design saves electricity while delivering strong performance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔩</div>
+        <h4>Easy Surface Install</h4>
+        <p>No borewell needed. Simple surface mounting for fast setup anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🏆</div>
+        <h4>Top Brand Quality</h4>
+        <p>Kirloskar, Crompton, Lubi — motors trusted by millions of Indian homes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">✅</div>
+        <h4>ISI / BIS Certified</h4>
+        <p>All products carry BIS certification for quality and safety standards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📦</div>
+        <h4>Ready Stock</h4>
+        <p>All popular models available in ready stock for immediate delivery.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODEL TABLE -->
+  <div class="section">
+    <div class="section-title">Complete Product Range</div>
+    <h2>Monoset Pump Models</h2>
+    <div class="accent-bar"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>HP</th>
+          <th>Max Head</th>
+          <th>Discharge</th>
+          <th>Suction</th>
+          <th>Phase</th>
+          <th>Outlet</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CRN-0.5HP</td>
+          <td><strong>0.5 HP</strong></td>
+          <td>25 m</td>
+          <td>800 LPH</td>
+          <td>6 m</td>
+          <td>Single Phase</td>
+          <td>25mm (1")</td>
+          <td><span class="badge badge-starter">Starter</span></td>
+        </tr>
+        <tr>
+          <td>CRN-1HP</td>
+          <td><strong>1 HP</strong></td>
+          <td>35 m</td>
+          <td>1,500 LPH</td>
+          <td>7 m</td>
+          <td>Single Phase</td>
+          <td>25mm (1")</td>
+          <td><span class="badge badge-bestseller">Best Seller</span></td>
+        </tr>
+        <tr>
+          <td>CRN-1.5HP</td>
+          <td><strong>1.5 HP</strong></td>
+          <td>42 m</td>
+          <td>2,200 LPH</td>
+          <td>7 m</td>
+          <td>Single Phase</td>
+          <td>32mm (1.25")</td>
+          <td><span class="badge badge-popular">Popular</span></td>
+        </tr>
+        <tr>
+          <td>CRN-2HP</td>
+          <td><strong>2 HP</strong></td>
+          <td>48 m</td>
+          <td>3,000 LPH</td>
+          <td>8 m</td>
+          <td>Single Phase</td>
+          <td>32mm (1.25")</td>
+          <td><span class="badge badge-homeplus">Home Plus</span></td>
+        </tr>
+        <tr>
+          <td>CRN-3HP</td>
+          <td><strong>3 HP</strong></td>
+          <td>58 m</td>
+          <td>4,200 LPH</td>
+          <td>8 m</td>
+          <td>Three Phase</td>
+          <td>40mm (1.5")</td>
+          <td><span class="badge badge-farm">Farm Ready</span></td>
+        </tr>
+        <tr>
+          <td>CRN-3HP SP</td>
+          <td><strong>3 HP (SP)</strong></td>
+          <td>55 m</td>
+          <td>4,000 LPH</td>
+          <td>8 m</td>
+          <td>Single Phase</td>
+          <td>40mm (1.5")</td>
+          <td><span class="badge badge-single">Single Phase</span></td>
+        </tr>
+        <tr>
+          <td>CRN-4HP</td>
+          <td><strong>4 HP</strong></td>
+          <td>65 m</td>
+          <td>5,500 LPH</td>
+          <td>8 m</td>
+          <td>Three Phase</td>
+          <td>50mm (2")</td>
+          <td><span class="badge badge-heavy">Heavy Duty</span></td>
+        </tr>
+        <tr>
+          <td>CRN-5HP</td>
+          <td><strong>5 HP</strong></td>
+          <td>75 m</td>
+          <td>7,000 LPH</td>
+          <td>8 m</td>
+          <td>Three Phase</td>
+          <td>50mm (2")</td>
+          <td><span class="badge badge-promax">Pro Max</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GENERAL SPECS -->
+  <div class="section">
+    <div class="section-title">Technical Details</div>
+    <h2>General Specifications</h2>
+    <div class="accent-bar"></div>
+    <div class="spec-grid">
+      <div class="spec-item"><div class="label">Pump Type</div><div class="value">Self-Priming Monoblock</div></div>
+      <div class="spec-item"><div class="label">Voltage</div><div class="value">Single: 220V | Three: 415V</div></div>
+      <div class="spec-item"><div class="label">Frequency</div><div class="value">50 Hz</div></div>
+      <div class="spec-item"><div class="label">Motor Insulation</div><div class="value">Class B / Class F</div></div>
+      <div class="spec-item"><div class="label">Body Material</div><div class="value">Cast Iron / SS / Aluminium</div></div>
+      <div class="spec-item"><div class="label">Impeller Type</div><div class="value">Radial Flow</div></div>
+      <div class="spec-item"><div class="label">Mount Type</div><div class="value">Surface / Horizontal</div></div>
+      <div class="spec-item"><div class="label">Warranty</div><div class="value">1 Year Motor Warranty</div></div>
+      <div class="spec-item"><div class="label">Certifications</div><div class="value">BIS / ISI Marked</div></div>
+      <div class="spec-item"><div class="label">Max Liquid Temp</div><div class="value">Up to 60°C</div></div>
+    </div>
+  </div>
+
+  <!-- VS SECTION -->
+  <div class="section">
+    <div class="section-title">Comparison</div>
+    <h2>Monoset vs. Submersible</h2>
+    <div class="accent-bar"></div>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <h4>✅ Choose Monoset When:</h4>
+        <ul>
+          <li>Water source is above ground (tank, canal, well)</li>
+          <li>No borewell available or needed</li>
+          <li>Domestic / garden / small farm use</li>
+          <li>Easy surface installation required</li>
+          <li>Single-phase power supply only</li>
+          <li>Budget-friendly option needed</li>
+        </ul>
+      </div>
+      <div class="vs-card">
+        <h4>🔵 Choose Submersible When:</h4>
+        <ul>
+          <li>Water source is deep underground (borewell)</li>
+          <li>High head / deep lift required (50m+)</li>
+          <li>Large farm or industrial water supply</li>
+          <li>Continuous high-volume pumping needed</li>
+          <li>Three-phase power available</li>
+          <li>Silent operation preferred</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATIONS -->
+  <div class="section">
+    <div class="section-title">Use Cases</div>
+    <h2>Applications</h2>
+    <div class="accent-bar"></div>
+    <div class="app-grid">
+      <div class="app-card"><div class="icon">🏠</div><div><h4>Home Water Supply</h4><p>Overhead tank filling, bathroom supply and daily domestic water needs.</p></div></div>
+      <div class="app-card"><div class="icon">🌱</div><div><h4>Garden & Lawn</h4><p>Garden watering, drip irrigation and sprinkler systems for small to medium gardens.</p></div></div>
+      <div class="app-card"><div class="icon">🌾</div><div><h4>Small Farm Irrigation</h4><p>Surface water pumping from canals, ponds and open wells for farm irrigation.</p></div></div>
+      <div class="app-card"><div class="icon">🏢</div><div><h4>Commercial Buildings</h4><p>Water transfer in shops, offices, hotels and small commercial establishments.</p></div></div>
+      <div class="app-card"><div class="icon">🚜</div><div><h4>Poultry & Dairy</h4><p>Clean water supply for poultry farms, dairy units and livestock facilities.</p></div></div>
+      <div class="app-card"><div class="icon">🏗️</div><div><h4>Construction & Cleaning</h4><p>Water supply for construction sites, car washing and industrial cleaning.</p></div></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Get In Touch</h2>
+    <p>For pricing, availability, installation advice or custom requirements — contact us directly.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="clabel">Phone / WhatsApp</div>
+        <div class="cvalue">+91 92747 67732</div>
+      </div>
+      <div class="contact-item">
+        <div class="clabel">Contact Person</div>
+        <div class="cvalue">Darshan Patel</div>
+      </div>
+      <div class="contact-item">
+        <div class="clabel">Website</div>
+        <div class="cvalue">radheindustries.in</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">© 2026 Radhe Industries. All Rights Reserved. | This catalog is for reference purposes only. Specifications subject to change without prior notice.</div>
+
+</body>
+</html>

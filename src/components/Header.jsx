@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ChevronDown, Phone, X, Menu } from 'lucide-react';
-import logo from '../assets/a7a57638-a235-4d2e-bcb4-80cad06d9196.png';
-import { SITE, WHATSAPP_URL } from '../constants/site';
+import logo from '../assets/RADHE JPG 222.jpg.jpeg';
+import { SITE } from '../constants/site';
+import { getWhatsAppUrl, openWhatsApp } from '../lib/whatsapp';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Radhe Industries" className="h-10 sm:h-12 w-auto object-contain" />
+            <img src={logo} alt="Radhe Industries" className="h-12 sm:h-16 w-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
@@ -105,7 +106,7 @@ export default function Header() {
               <NavLink to="/contact" className="text-graphite/85 text-sm font-bold tracking-wider py-2 uppercase" onClick={() => setMobileOpen(false)}>Contact Us</NavLink>
               <div className="flex gap-3 mt-4">
                 <a href={`tel:${SITE.phoneTel}`} className="flex-1 text-center border border-gray-200 text-graphite font-bold py-3 rounded text-xs">Call Darshan Patel</a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-[#25D366] text-white font-bold py-3 rounded text-xs">WhatsApp</a>
+                <a href={getWhatsAppUrl(SITE.whatsapp)} onClick={(e) => { e.preventDefault(); openWhatsApp(SITE.whatsapp); }} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-[#25D366] text-white font-bold py-3 rounded text-xs">WhatsApp</a>
               </div>
             </nav>
           </div>
